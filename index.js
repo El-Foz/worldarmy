@@ -60,5 +60,6 @@ client.on('interactionCreate', async interaction=>{
             await interaction.reply('Country does not exist')
         }
     }
+    if(commandName=='repo') await interaction.reply('https://github.com/TheDNAHero/worldarmy')
 })
 client.login(process.env.token)

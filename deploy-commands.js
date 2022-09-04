@@ -22,7 +22,8 @@ const commands = [
     new SlashCommandBuilder().setName('stats').setDescription('view some stats about the countries').addStringOption(option=>
         option.setName('country')
             .setDescription('View the stats of a specific country')
-            .setRequired(true))
+            .setRequired(true)),
+    new SlashCommandBuilder().setName('repo').setDescription('View the code repository')
 ].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.token);
