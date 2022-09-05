@@ -4,7 +4,8 @@
   "description": "A bot for world army",
   "main": "index.js",
   "scripts": {
-    "test": "node index"
+    "test": "node index",
+    "start": "node index"
   },
   "author": "TheDNAHero#6253",
   "license": "ISC",
