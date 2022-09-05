@@ -1,6 +1,5 @@
 require('dotenv').config()
 const { Client, GatewayIntentBits }=require('discord.js');
-const { AggregateGroupByReducers } = require('redis');
 const client=new Client({ intents: [GatewayIntentBits.Guilds] })
 const SQLite3 = require('sqlite3').verbose();
 const db = new SQLite3.Database('army.db');
