@@ -61,5 +61,23 @@ client.on('interactionCreate', async interaction=>{
         }
     }
     if(commandName=='repo') await interaction.reply('https://github.com/TheDNAHero/worldarmy')
+    if(commandName=="add"){
+        await db.each('select wealth from countries where name=(?)', [interaction.options.getString('country')], async (err, row)=>{
+            let n= await Number(row.wealth)+interaction.options.getNumber('amount');
+            if(err) await console.error(err)
+            await db.run(`UPDATE countries set wealth=(?) where name = (?)`, [n, interaction.options.getString('country')])
+            await interaction.reply('Added')
+        })
+
+    }
+    if(commandName=="buy"){
+        await db.each('select wealth from countries where name=(?)', [interaction.options.getString('country')], async (err, row)=>{
+            let n= await Number(row.wealth)-interaction.options.getNumber('amount')
+            if(err) await console.error(err)
+            await db.run(`UPDATE countries set wealth=(?) where name = (?)`, [n, interaction.options.getString('country')])
+            await interaction.reply('Bought')
+        })
+
+    }
 })
 client.login(process.env.token)

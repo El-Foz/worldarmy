@@ -23,7 +23,23 @@ const commands = [
         option.setName('country')
             .setDescription('View the stats of a specific country')
             .setRequired(true)),
-    new SlashCommandBuilder().setName('repo').setDescription('View the code repository')
+    new SlashCommandBuilder().setName('repo').setDescription('View the code repository'),
+    new SlashCommandBuilder().setName('add').setDescription('adds money to a country').addStringOption(option=>
+        option.setName('country')
+            .setDescription('Which country')
+            .setRequired(true))
+        .addNumberOption(option=>
+            option.setName('amount')
+                .setDescription('amount that is to be added')
+                .setRequired(true)),
+    new SlashCommandBuilder().setName('buy').setDescription('removes money to a country').addStringOption(option=>
+        option.setName('country')
+            .setDescription('Which country')
+            .setRequired(true))
+        .addNumberOption(option=>
+            option.setName('amount')
+                .setDescription('amount that is to be removed')
+                .setRequired(true)),
 ].map(command => command.toJSON());
 
 const rest = new REST({ version: '10' }).setToken(process.env.token);
